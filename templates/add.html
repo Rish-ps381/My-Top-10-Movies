@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Movie{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h1 class="heading">Add a Movie</h1>
+</div>
+<form action="/addmovie" method="POST" class="p-4 bg-light rounded shadow-sm">
+  <div class="mb-3">
+    <h1><label class="form-label">Movie Title</label></h1>
+    <input type="text" name="addmovie" class="form-control" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Add Movie</button>
+</form>
+{% endblock %}
