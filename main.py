@@ -2,11 +2,13 @@ from flask import Flask, render_template, redirect, url_for, request
 from flask_bootstrap import Bootstrap5
 import requests
 import sqlite3
-
+import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 Bootstrap5(app)
 
+load_dotenv()
 # CREATE DB
 db = sqlite3.connect('Top-10-movies.db', check_same_thread=False)
 db.row_factory = sqlite3.Row
@@ -16,7 +18,7 @@ API_SEARCH_DB_URL = 'https://api.themoviedb.org/3/search/movie'
 API_MOVIE_DETAILS = 'https://api.themoviedb.org/3/movie'
 IMAGES_URL_PREFIX = 'https://image.tmdb.org/t/p/original'
 
-API_KEY = 'c63b4c0c7df4700b5da8016dabc5b0a9'
+API_KEY = os.getenv("API_KEY")
 
 # CREATE TABLE
 # cursor.execute('CREATE TABLE top10movies(id INTEGER PRIMARY KEY, title varchar(250) NOT NULL UNIQUE, year INTEGER NOT NULL , description varchar(250) NOT NULL, rating FLOAT NOT NULL , ranking INTEGER NOT NULL UNIQUE , review varchar(250) NOT NULL, img_url varchar(250) NOT NULL)')
